@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Hiring Flowchart</title>
+  <style>
+    body {
+      font-family: "Maisen Neu Demi", Arial, sans-serif;
+      background-color: #f9f9f9;
+      padding: 20px;
+    }
+    .flowchart {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      gap: 30px;
+    }
+    .step {
+      padding: 15px;
+      border-radius: 8px;
+      width: 250px;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.2s;
+      z-index: 2;
+      font-family: "Maisen Neu Demi", Arial, sans-serif;
+    }
+    .step:hover {
+      transform: scale(1.03);
+    }
+    .HiringManager { background-color: #00ADB8; color: white; }
+    .HR { background-color: #70AD47; color: white; }
+    .Security { background-color: #000000; color: white; }
+    .AED { background-color: #00AA59; color: white; }
+    .detail-box {
+      display: none;
+      position: absolute;
+      top: 110%;
+      left: 0;
+      background: white;
+      border: 1px solid #ccc;
+      padding: 10px;
+      width: 100%;
+      z-index: 3;
+      border-radius: 6px;
+      color: #000000;
+    }
+    .step.active .detail-box {
+      display: block;
+    }
+    .branch-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 80px;
+      width: 100%;
+    }
+    svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3000px;
+      pointer-events: none;
+      z-index: 1;
+    }
+    @media (max-width: 768px) {
+      .branch-container {
+        flex-direction: column;
+        gap: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div style="text-align: center; margin-bottom: 20px;">
+    <img src="https://thej.org/wp-content/uploads/2021/06/Pozez-JCC-Northern-Virginia-logo.png" alt="Pozez JCC Northern Virginia Logo" style="max-width: 300px; height: auto;">
+  </div>
+  <h1 style="font-family: 'Trade Gothic', sans-serif; color: #00ADB8;">Interactive Hiring Flowchart</h1>
+  <div class="flowchart">
+    <div class="step HiringManager">Create Job Requisition<div class="detail-box">Create new job requisition in Rippling with required details. Exit: Saved requisition.</div></div>
+    <div class="step HiringManager">Set Pipeline<div class="detail-box">Confirm standard pipeline is attached. Exit: Pipeline set.</div></div>
+    <div class="step HiringManager">Attach Emails<div class="detail-box">Ensure each stage has the correct email template. Exit: Templates active.</div></div>
+    <div class="step HiringManager">Create Job Post<div class="detail-box">Publish job on JCC site + Indeed. Exit: Posting is open.</div></div>
+    <div class="step HiringManager">Application Stage<div class="detail-box">Review applicants. Send confirmation or rejection email. Exit: Reviewed.</div></div>
+    <div class="step HiringManager">Screen Stage<div class="detail-box">Conduct phone/resume screen outside Rippling. Exit: Screen complete.</div></div>
+    <div class="step HiringManager">Interview Stage<div class="detail-box">Manager schedules and conducts interviews. Exit: Interview complete.</div></div>
+    <div class="step HiringManager">Provisional Letter of Hire<div class="detail-box">Send Provisional LOH email and forms. Exit: Packet returned.</div></div>
+    <div class="branch-container">
+      <div class="step HiringManager">Background Check - Child Care<div class="detail-box">VDOE process; results to AED. Exit: Cleared.</div></div>
+      <div class="step Security">Background Check - Non-Child Care<div class="detail-box">VA State Police + Fieldprint; clearance confirmed by Security. Exit: Cleared.</div></div>
+    </div>
+    <div class="step HR">Offer Stage<div class="detail-box">HR sends full offer packet. Candidate signs in Rippling. Exit: Offer signed.</div></div>
+    <div class="step HiringManager">Pre-Onboarding Tasks<div class="detail-box">Complete IT/Security forms and send Welcome Email. Exit: Ready to onboard.</div></div>
+  </div>
+  <script>
+    function toggleDetail(element) {
+      const active = document.querySelector('.step.active');
+      if (active && active !== element) active.classList.remove('active');
+      element.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
