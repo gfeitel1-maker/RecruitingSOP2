@@ -104,5 +104,11 @@
       element.classList.toggle('active');
     }
   </script>
+  function toggleDetail(element) {
+    const active = document.querySelector('.step.active');
+    if (active && active !== element) active.classList.remove('active');
+    element.classList.toggle('active');
+  }
+</script>
 </body>
 </html>
